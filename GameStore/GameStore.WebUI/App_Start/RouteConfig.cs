@@ -9,9 +9,15 @@ namespace GameStore.WebUI
 {
     public class RouteConfig
     {
-        public static void RegisterRoutes(RouteCollection routes)
+        public static void RegisterRoutes(RouteCollection routes)//a
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: null,
+                url: "Page{page}",
+                defaults: new { controller = "Game", action = "List" }
+            );
 
             routes.MapRoute(
                 name: "Default",
