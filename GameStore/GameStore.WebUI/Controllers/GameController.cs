@@ -8,7 +8,7 @@ using GameStore.Domain.Entities;
 
 namespace GameStore.WebUI.Controllers
 {
-    public class GameController : Controller
+    public class GameController : Controller//a
     {
         private IGameRepository repository;
         public GameController(IGameRepository repo)
