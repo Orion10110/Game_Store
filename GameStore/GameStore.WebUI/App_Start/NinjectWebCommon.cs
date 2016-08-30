@@ -10,7 +10,8 @@ namespace GameStore.WebUI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-
+    using Infrastructure.Concrete;
+    using Infrastructure.Abstract;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -42,7 +43,7 @@ namespace GameStore.WebUI.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-            
+            kernel.Bind<IAuthProvider>().To<FormAuthProvider>();
             RegisterServices(kernel);
             return kernel;
         }
